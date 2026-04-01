@@ -3,12 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Clone') {
-            steps {
-                git 'https://github.com/shanthukumar188-glitch/bank_bo.git'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t bank-app .'
