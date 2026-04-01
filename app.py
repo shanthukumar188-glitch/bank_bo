@@ -4,7 +4,6 @@ import time
 
 app = Flask(__name__)
 
-# Initialize DB (with retry safety)
 def init_db():
     while True:
         try:
@@ -54,7 +53,7 @@ def add_customer():
     return jsonify({"message": "Customer added"})
 
 
-@app.route('/customers', methods=['GET'])
+@app.route('/customers')
 def get_customers():
     conn = get_connection()
     cursor = conn.cursor()
@@ -68,5 +67,5 @@ def get_customers():
 
 
 if __name__ == '__main__':
-    init_db()   # ✅ moved here
+    init_db()
     app.run(host='0.0.0.0', port=5000)
