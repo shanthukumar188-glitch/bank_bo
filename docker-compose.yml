@@ -1,20 +1,20 @@
-version: '3.8'
+version: '3'
 
 services:
   db:
-    image: mysql:8.0
-    container_name: mysql-container
+    image: mysql:8
+    container_name: mysql-db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: bankdb
     ports:
       - "3306:3306"
 
-  app:
+  web:
     build: .
-    container_name: bank-app
-    ports:
-      - "5000:5000"
+    container_name: flask-app
     depends_on:
       - db
+    ports:
+      - "5000:5000"
